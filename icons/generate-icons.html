@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Icon Generator - Dual Subtitle</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #667eea;
+        }
+        canvas {
+            border: 2px solid #ddd;
+            margin: 10px;
+            border-radius: 8px;
+        }
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            opacity: 0.9;
+        }
+        .icons-grid {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+        .icon-item {
+            text-align: center;
+        }
+        .instructions {
+            background: #e3f2fd;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Dual Subtitle Icon Generator</h1>
+        <p>Click the buttons below to download icons in required sizes for Chrome Web Store.</p>
+        
+        <div class="instructions">
+            <strong>Required Sizes:</strong>
+            <ul>
+                <li>16x16 - Extension toolbar icon</li>
+                <li>48x48 - Extension management page</li>
+                <li>128x128 - Chrome Web Store and installation</li>
+            </ul>
+        </div>
+
+        <div class="icons-grid">
+            <div class="icon-item">
+                <h3>16x16</h3>
+                <canvas id="icon16" width="16" height="16"></canvas>
+                <br>
+                <button onclick="downloadIcon('icon16', 'icon16.png')">Download</button>
+            </div>
+            <div class="icon-item">
+                <h3>48x48</h3>
+                <canvas id="icon48" width="48" height="48"></canvas>
+                <br>
+                <button onclick="downloadIcon('icon48', 'icon48.png')">Download</button>
+            </div>
+            <div class="icon-item">
+                <h3>128x128</h3>
+                <canvas id="icon128" width="128" height="128"></canvas>
+                <br>
+                <button onclick="downloadIcon('icon128', 'icon128.png')">Download</button>
+            </div>
+        </div>
+
+        <button onclick="downloadAll()" style="font-size: 18px; padding: 15px 30px;">
+            📥 Download All Icons
+        </button>
+    </div>
+
+    <script>
+        function drawIcon(canvas) {
+            const ctx = canvas.getContext('2d');
+            const size = canvas.width;
+            const scale = size / 128;
+
+            // Clear canvas
+            ctx.clearRect(0, 0, size, size);
+
+            // Draw rounded rectangle background with gradient
+            const gradient = ctx.createLinearGradient(0, 0, size, size);
+            gradient.addColorStop(0, '#667eea');
+            gradient.addColorStop(1, '#764ba2');
+            
+            ctx.fillStyle = gradient;
+            roundRect(ctx, 0, 0, size, size, 20 * scale);
+            ctx.fill();
+
+            // Draw subtitle lines
+            ctx.globalAlpha = 0.9;
+            
+            // Top line (English) - white
+            ctx.fillStyle = 'white';
+            roundRect(ctx, 24 * scale, 35 * scale, 80 * scale, 8 * scale, 4 * scale);
+            ctx.fill();
+
+            // Middle line (Pinyin) - yellow
+            ctx.globalAlpha = 0.95;
+            ctx.fillStyle = '#ffeb3b';
+            roundRect(ctx, 28 * scale, 52 * scale, 72 * scale, 7 * scale, 3.5 * scale);
+            ctx.fill();
+
+            // Bottom line (Chinese) - white
+            ctx.globalAlpha = 0.95;
+            ctx.fillStyle = 'white';
+            roundRect(ctx, 20 * scale, 68 * scale, 88 * scale, 9 * scale, 4.5 * scale);
+            ctx.fill();
+
+            // Draw play button
+            ctx.globalAlpha = 0.25;
+            ctx.beginPath();
+            ctx.arc(64 * scale, 92 * scale, 18 * scale, 0, 2 * Math.PI);
+            ctx.fillStyle = 'white';
+            ctx.fill();
+
+            // Draw play triangle
+            ctx.globalAlpha = 0.9;
+            ctx.beginPath();
+            ctx.moveTo(59 * scale, 84 * scale);
+            ctx.lineTo(59 * scale, 100 * scale);
+            ctx.lineTo(73 * scale, 92 * scale);
+            ctx.closePath();
+            ctx.fillStyle = 'white';
+            ctx.fill();
+
+            ctx.globalAlpha = 1.0;
+        }
+
+        function roundRect(ctx, x, y, width, height, radius) {
+            ctx.beginPath();
+            ctx.moveTo(x + radius, y);
+            ctx.lineTo(x + width - radius, y);
+            ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
+            ctx.lineTo(x + width, y + height - radius);
+            ctx.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+            ctx.lineTo(x + radius, y + height);
+            ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
+            ctx.lineTo(x, y + radius);
+            ctx.quadraticCurveTo(x, y, x + radius, y);
+            ctx.closePath();
+        }
+
+        function downloadIcon(canvasId, filename) {
+            const canvas = document.getElementById(canvasId);
+            const link = document.createElement('a');
+            link.download = filename;
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        }
+
+        function downloadAll() {
+            setTimeout(() => downloadIcon('icon16', 'icon16.png'), 100);
+            setTimeout(() => downloadIcon('icon48', 'icon48.png'), 300);
+            setTimeout(() => downloadIcon('icon128', 'icon128.png'), 500);
+        }
+
+        // Generate all icons on page load
+        window.onload = function() {
+            drawIcon(document.getElementById('icon16'));
+            drawIcon(document.getElementById('icon48'));
+            drawIcon(document.getElementById('icon128'));
+        };
+    </script>
+</body>
+</html>
+

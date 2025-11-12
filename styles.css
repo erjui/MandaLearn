@@ -1,0 +1,106 @@
+/* Dual Subtitle for YouTube - Styles */
+
+.dual-subtitle-container {
+    position: absolute;
+    bottom: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 1200px;
+    z-index: 9999;
+    pointer-events: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.dual-subtitle {
+    background-color: rgba(0, 0, 0, 0.85);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-family: 'Arial', 'Helvetica', sans-serif;
+    text-align: center;
+    max-width: 100%;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    line-height: 1.4;
+    display: none;
+}
+
+/* First subtitle - typically English */
+.dual-subtitle-0 {
+    font-size: 20px;
+    font-weight: 400;
+    color: #ffffff;
+}
+
+/* Second subtitle - typically Pinyin */
+.dual-subtitle-1 {
+    font-size: 18px;
+    font-weight: 300;
+    color: #ffeb3b;
+    font-style: italic;
+}
+
+/* Third subtitle - typically Chinese */
+.dual-subtitle-2 {
+    font-size: 22px;
+    font-weight: 500;
+    color: #ffffff;
+    font-family: 'Microsoft YaHei', 'SimHei', 'STHeiti', sans-serif;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .dual-subtitle-container {
+        bottom: 40px;
+        width: 95%;
+    }
+    
+    .dual-subtitle-0 {
+        font-size: 16px;
+    }
+    
+    .dual-subtitle-1 {
+        font-size: 14px;
+    }
+    
+    .dual-subtitle-2 {
+        font-size: 18px;
+    }
+}
+
+/* Fullscreen mode adjustments */
+.ytp-fullscreen .dual-subtitle-container {
+    bottom: 80px;
+}
+
+.ytp-fullscreen .dual-subtitle-0 {
+    font-size: 24px;
+}
+
+.ytp-fullscreen .dual-subtitle-1 {
+    font-size: 22px;
+}
+
+.ytp-fullscreen .dual-subtitle-2 {
+    font-size: 26px;
+}
+
+/* Animation for subtitle appearance */
+.dual-subtitle {
+    animation: fadeIn 0.2s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+

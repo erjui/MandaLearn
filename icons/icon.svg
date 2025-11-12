@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="128" height="128" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect width="128" height="128" rx="20" fill="url(#gradient)"/>
+    
+    <!-- Gradient Definition -->
+    <defs>
+        <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+        </linearGradient>
+    </defs>
+    
+    <!-- Subtitle lines icon -->
+    <!-- Top line (English) -->
+    <rect x="24" y="35" width="80" height="8" rx="4" fill="white" opacity="0.9"/>
+    
+    <!-- Middle line (Pinyin) -->
+    <rect x="28" y="52" width="72" height="7" rx="3.5" fill="#ffeb3b" opacity="0.95"/>
+    
+    <!-- Bottom line (Chinese) -->
+    <rect x="20" y="68" width="88" height="9" rx="4.5" fill="white" opacity="0.95"/>
+    
+    <!-- Play button overlay -->
+    <circle cx="64" cy="92" r="18" fill="white" opacity="0.25"/>
+    <polygon points="59,84 59,100 73,92" fill="white" opacity="0.9"/>
+</svg>
+

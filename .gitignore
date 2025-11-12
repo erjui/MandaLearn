@@ -1,0 +1,24 @@
+# Chrome extension package
+*.zip
+*.crx
+*.pem
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Temporary files
+*.tmp
+*.log
+
+# Node modules (if you add build tools later)
+node_modules/
+package-lock.json
+
+# Generated icons (keep the generator, ignore outputs if you prefer)
+# icons/*.png
+
