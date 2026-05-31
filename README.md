@@ -2,6 +2,19 @@
 
 A Chrome extension that displays multiple subtitles simultaneously on YouTube videos, perfect for language learning. Display English, Pinyin, and Chinese subtitles at the same time!
 
+## 🎬 Demo
+
+![Dual Subtitle demo](assets/demo.gif)
+
+> English, Pinyin, and Simplified Chinese shown together, in sync with the video. ([full-quality MP4](assets/demo.mp4))
+
+## 📸 Screenshots
+
+| Stacked subtitles on YouTube | Extension popup |
+| :---: | :---: |
+| ![Three subtitle tracks stacked on a YouTube video](assets/screenshot-subtitles.jpeg) | ![Language selection popup](assets/screenshot-popup.png) |
+| English + Pinyin + Simplified Chinese displayed at once | Toggle the extension and pick up to 3 languages in order |
+
 ## 🌟 Features
 
 - **Multiple Subtitles**: Display up to 3 subtitle tracks simultaneously
@@ -20,8 +33,8 @@ A Chrome extension that displays multiple subtitles simultaneously on YouTube vi
 
 1. **Download or Clone this Repository**
    ```bash
-   git clone https://github.com/yourusername/dual_subtitle.git
-   cd dual_subtitle
+   git clone https://github.com/erjui/MandaLearn.git
+   cd MandaLearn
    ```
 
 2. **Generate Icons**
